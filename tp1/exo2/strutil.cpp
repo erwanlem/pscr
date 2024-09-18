@@ -1,4 +1,5 @@
 #include "strutil.h"
+#include <iostream>
 
 namespace pr {
 
@@ -13,5 +14,10 @@ namespace pr {
         char* res = new char[len+1];
         memcpy(res, str, len+1);
         return res;
+    }
+
+    int compare(const char* a, const char* b) {
+        while (*a && *b && *a-*b == 0 ){ *a++; *b++;}
+        return *a - *b > 0 ? 1 : (*a - *b < 0) ? -1 : 0;
     }
 }

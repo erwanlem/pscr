@@ -5,7 +5,9 @@ namespace pr {
     String::String(const char* ori) : str(ori) {}
 
     String::String(const String& ori) {
-        str = ori.str;
+        char* cp = new char[ori.length()];
+        strcpy(cp, ori.str);
+        str = cp;
     }
 
     String::~String() {
@@ -16,9 +18,11 @@ namespace pr {
         return pr::length(str);
     }
 
-    std::ostream& String::operator<< (std::ostream& os) {
-        os << str << std::endl;
-        return os;
+    String& String::operator=(const String& s) {
+        char* cp = new char[s.length()];
+        std::cout << "cp done" << std::endl;
+        strcpy(cp, s.str);
+        str = cp;
+        return *this;
     }
-
 }
